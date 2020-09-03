@@ -21,7 +21,7 @@ cv2.waitKey(0) #wait key is used to display the image untill we close the window
 
 # access the RGB pixel located at x=50, y=100, keepind in mind that
 # OpenCV stores images in BGR order rather than RGB
-
+"""
 B,G,R=img[100,50]
 print(f" Blue {B}, green {G}, Red {R}")
 
@@ -55,4 +55,21 @@ dim=(100,int(h*r)) #(width,height)
 img_resized_aspect=cv2.resize(img, dim)
 cv2.imshow("the image resized based on the aspect ratio",img_resized_aspect)
 cv2.waitKey(0)
-################################################################################
+"""
+########################ROTARE IMAGE#####################################
+# let's rotate an image 45 degrees clockwise using OpenCV by first
+# computing the image center, then constructing the rotation matrix,
+# and then finally applying the affine warp
+
+cneter=(w//2,h//2)
+rotation_matrix=cv2.getRotationMatrix2D(cneter,-50,1.0) # image,degree,scale
+img_rotated= cv2.warpAffine(img,rotation_matrix,cneter)
+cv2.imshow("rotated image",img_rotated)
+
+
+#the same can be achived by the imutiles library
+import imutils
+img_rotated_imutils=imutils.rotate(img,-50)
+cv2.imshow("rotated image using imutils",img_rotated_imutils)
+cv2.waitKey(0)
+
