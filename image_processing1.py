@@ -25,6 +25,7 @@ cv2.imshow("the negative image",img_negative)
 cv2.waitKey(0)
 
 ###################################################################################### 2
+
 #here we are extracting each color channel of the image separatly and display them
 b=img_color[:,:,0]
 g=img_color[:,:,1]
